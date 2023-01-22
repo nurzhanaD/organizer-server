@@ -5,35 +5,22 @@ create TABLE user_info(
     first_name VARCHAR(250),
     last_name VARCHAR(250),
     profile_image VARCHAR(450),
-    goals VARCHAR(250),
-    journal VARCHAR(250),
-    notes VARCHAR(250),
-    to_do_s VARCHAR(250)
+    goals JSON[],
+    journal JSON[],
+    notes JSON[],
+    to_do_s JSON[]
 );
 
 create TABLE goal(
     goal_id VARCHAR(250) PRIMARY KEY,
-    title VARCHAR(250),
-    _type VARCHAR(250),
-    questions VARCHAR(250),
-    answers VARCHAR(250),
+    which VARCHAR(250),
+    why VARCHAR(250),
+    how VARCHAR(250),
+    _when VARCHAR(250),
+    importance VARCHAR(250),
+    comment VARCHAR(450),
     _date VARCHAR(250),
-    user_id VARCHAR(250),
-    FOREIGN KEY user_id REFERENCES user_info (user_id)
-);
-
-create TABLE goal_questions(
-    question_id VARCHAR(250) PRIMARY KEY,
-    question VARCHAR(250),
-    goal_id VARCHAR(250),
-    FOREIGN KEY goal_id REFERENCES goal (goal_id)
-);
-
-create TABLE goal_answers(
-    answer_id VARCHAR(250) PRIMARY KEY,
-    answer VARCHAR(250),
-    goal_id VARCHAR(250),
-    FOREIGN KEY goal_id REFERENCES goal (goal_id)
+    user_id VARCHAR(250)
 );
 
 create TABLE to_do(
@@ -47,7 +34,7 @@ create TABLE to_do(
 
 create TABLE note(
     note_id VARCHAR(250) PRIMARY KEY,
-    note_content TEXT(400),
+    note_content TEXT(450),
     _date VARCHAR(250),
     user_id VARCHAR(250),
     FOREIGN KEY user_id REFERENCES user_info (user_id)
@@ -55,24 +42,19 @@ create TABLE note(
 
 create TABLE journal(
     journal_id VARCHAR(250) PRIMARY KEY,
-    questions VARCHAR(250)
-    answers VARCHAR(250),
+    time_on_work VARCHAR(250),
+    time_on_rest VARCHAR(250),
+    when_easy VARCHAR(250),
+    most_time VARCHAR(250),
+    pleased BOOLEAN,
+    my_day TEXT(450),
     _date VARCHAR(250),
     user_id VARCHAR(250),
     FOREIGN KEY user_id REFERENCES user_info (user_id)
 );
 
-create TABLE journal_questions(
-    question_id VARCHAR(250) PRIMARY KEY,
-    question VARCHAR(250),
-    journal_id VARCHAR(250),
-    FOREIGN KEY journal_id REFERENCES journal (journal_id)
-
-);
-
-create TABLE journal_answers(
-    answer_id VARCHAR(250) PRIMARY KEY,
-    answer VARCHAR(250),
-    journal_id VARCHAR(250),
-    FOREIGN KEY journal_id REFERENCES journal (journal_id)
-);
+create TABLE history(
+    history_id VARCHAR(250),
+    _date DATE,
+    FOREIGN KEY _date REFERENCES user_info (_date)
+)
