@@ -6,7 +6,7 @@ class UserController {
         const { email, _password, first_name, last_name, profile_image } = req.body;
         const newUser = await db.query('INSERT INTO user_info (user_id, email, _password, first_name, last_name, profile_image, goals, journal, notes, to_do_s) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *', 
         [uuidv4(), email, _password, first_name, last_name, profile_image, [], [], [], []]);
-        res.json(`user width id: ${newUser.rows[0].user_id} and email: ${newUser.rows[0].email} was signed up`);
+        res.json(newUser.rows);
     }
 
     async getAllUsers(req, res) {
