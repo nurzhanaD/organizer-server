@@ -10,13 +10,13 @@ class UserController {
     }
 
     async getAllUsers(req, res) {
-        const users = await db.query('SELECT * FROM user_info');
+        const users = await db.query('SELECT user_id, email, first_name, last_name, profile_image, goals, journal, notes, to_do_s FROM user_info');
         res.json(users.rows);
     }
 
     async getOneUser(req, res) {
         const user_id = req.params.user_id;
-        const user = await db.query('SELECT * FROM user_info WHERE user_id = $1', [user_id]);
+        const user = await db.query('SELECT user_id, email, first_name, last_name, profile_image, goals, journal, notes, to_do_s FROM user_info WHERE user_id = $1', [user_id]);
         res.json(user.rows[0]);
     }
 
