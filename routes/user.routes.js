@@ -3,6 +3,7 @@ const router = new Router();
 const userController = require("../controllers/user.controller.js");
 
 router.post('/addUser', userController.addUser);
+router.post('/signInUser', userController.signInUser);
 router.get('/getUsers', userController.getAllUsers);
 router.get('/getUsers/:user_id', userController.getOneUser);
 router.put('/updateUser/:user_id', userController.updateUser);

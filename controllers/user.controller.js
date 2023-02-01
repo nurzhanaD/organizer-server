@@ -9,6 +9,13 @@ class UserController {
         res.json(newUser.rows);
     }
 
+    async signInUser(req, res) {
+        const { email, _password } = req.body;
+        const signedInUser = await db.query('SELECT user_id FROM user_info WHERE email = $1 AND _password = $2', 
+        [ email, _password]);
+        res.json(signedInUser.rows);
+    }
+
     async getAllUsers(req, res) {
         const users = await db.query('SELECT user_id, email, first_name, last_name, profile_image, goals, journal, notes, to_do_s FROM user_info');
         res.json(users.rows);
