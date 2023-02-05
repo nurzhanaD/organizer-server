@@ -1,9 +1,9 @@
 create TABLE user_info(
-    user_id VARCHAR(250) PRIMARY KEY,
+    user_id VARCHAR(250) PRIMARY KEY UNIQUE,
     email VARCHAR(250) UNIQUE,
-    _password VARCHAR(250),
-    first_name VARCHAR(250),
-    last_name VARCHAR(250),
+    _password VARCHAR(250) NOT NULL,
+    first_name VARCHAR(250) NOT NULL,
+    last_name VARCHAR(250) NOT NULL,
     profile_image VARCHAR(450),
     goals JSON[],
     journal JSON[],
