@@ -17,7 +17,7 @@ create TABLE goal(
     why VARCHAR(250),
     how VARCHAR(250),
     _when VARCHAR(250),
-    importance VARCHAR(250),
+    _type VARCHAR(250),
     comment VARCHAR(450),
     _date VARCHAR(250),
     user_id VARCHAR(250)

@@ -3,9 +3,9 @@ const db = require('../db.js');
 
 class GoalController {
     async addGoal(req, res) {
-        const { which, why, how, _when, importance, comment, _date, user_id } = req.body;
-        const newGoal = await db.query('INSERT INTO goal (goal_id, which, why, how, _when, importance, comment, _date, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', 
-        [uuidv4(), which, why, how, _when, importance, comment, _date, user_id]);
+        const { which, why, how, _when, _type, comment, _date, user_id } = req.body;
+        const newGoal = await db.query('INSERT INTO goal (goal_id, which, why, how, _when, _type, comment, _date, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', 
+        [uuidv4(), which, why, how, _when, _type, comment, _date, user_id]);
         res.json(newGoal.rows);
     }
 
