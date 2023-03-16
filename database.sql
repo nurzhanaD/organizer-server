@@ -5,10 +5,10 @@ create TABLE user_info(
     first_name VARCHAR(250) NOT NULL,
     last_name VARCHAR(250) NOT NULL,
     profile_image VARCHAR(450),
-    goals JSON[],
-    journal JSON[],
-    notes JSON[],
-    to_do_s JSON[]
+    goals VARCHAR[],
+    journal VARCHAR[],
+    notes VARCHAR[],
+    to_do_s VARCHAR[]
 );
 
 create TABLE goal(

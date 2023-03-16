@@ -22,9 +22,13 @@ class GoalController {
 
     async updateGoal(req, res) {
         const goal_id = req.params.goal_id;
-        const { which, why, how, _when, importance, comment, _date} = req.body;
-        const goal = await db.query('UPDATE goal SET which = $1, why = $2, how = $3, _when = $4, importance = $5, comment = $6, _date = $7 WHERE goal_id = $8 RETURNING *',
-        [which, why, how, _when, importance, comment, _date, goal_id]);
+        const column_names = Object.keys(req.body);
+        let goal;
+        for (let i = 0; i < column_names.length; i++) {
+            let values = req.body[column_names[i]];
+            goal = await db.query(`UPDATE goal SET ${column_names[i]} = $1 WHERE goal_id = $2 RETURNING *`,
+            [values, goal_id]);
+        }
         res.json(goal.rows[0]);
     }
 
