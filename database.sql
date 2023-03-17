@@ -28,16 +28,14 @@ create TABLE to_do(
     to_do_content VARCHAR(250),
     isCompleted BOOLEAN,
     _date VARCHAR(250),
-    user_id VARCHAR(250),
-    FOREIGN KEY user_id REFERENCES user_info (user_id)
+    user_id VARCHAR(250)
 );
 
 create TABLE note(
     note_id VARCHAR(250) PRIMARY KEY,
-    note_content TEXT(450),
+    note_content TEXT,
     _date VARCHAR(250),
-    user_id VARCHAR(250),
-    FOREIGN KEY user_id REFERENCES user_info (user_id)
+    user_id VARCHAR(250)
 );
 
 create TABLE journal(
