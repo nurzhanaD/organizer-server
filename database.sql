@@ -26,7 +26,7 @@ create TABLE goal(
 create TABLE to_do(
     to_do_id VARCHAR(250) PRIMARY KEY,
     to_do_content VARCHAR(100),
-    is_completed BOOLEAN,
+    is_completed BOOLEAN NOT NULL,
     _date VARCHAR(250),
     user_id VARCHAR(250)
 );
