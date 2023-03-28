@@ -4,7 +4,7 @@ const db = require('../db.js');
 class ToDoController {
     async addToDo(req, res) {
         const { to_do_content, is_completed, _date, user_id } = req.body;
-        const newToDo = await db.query('INSERT INTO to_do (to_do_id, to_do_content, is_completed, _date, user_id) VALUES ($1, $2, $3, $4) RETURNING *', 
+        const newToDo = await db.query('INSERT INTO to_do (to_do_id, to_do_content, is_completed, _date, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *', 
         [uuidv4(), to_do_content, is_completed, _date, user_id]);
         res.json(newToDo.rows);
     }
