@@ -21,7 +21,7 @@ class ToDoController {
     }
 
     async deleteToDo(req, res) {
-        const to_do_id = req.params.note_id;
+        const to_do_id = req.params.to_do_id;
         const to_do = await db.query('DELETE FROM to_do WHERE to_do_id = $1', [to_do_id]);
         res.json(to_do.rows[0]);
     }
