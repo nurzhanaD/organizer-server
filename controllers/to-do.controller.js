@@ -22,7 +22,7 @@ class ToDoController {
 
     async updateCompleteStatus(req, res) {
         const to_do_id = req.params.to_do_id;
-        const is_completed = req.body;
+        const { is_completed } = req.body;
         const to_do = await db.query('UPDATE to_do SET is_completed = $1 where to_do_id = $2 RETURNING *',
         [is_completed, to_do_id]);
         res.json(to_do.rows[0]);
