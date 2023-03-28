@@ -25,7 +25,7 @@ create TABLE goal(
 
 create TABLE to_do(
     to_do_id VARCHAR(250) PRIMARY KEY,
-    to_do_content VARCHAR(250),
+    to_do_content VARCHAR(100),
     isCompleted BOOLEAN,
     _date VARCHAR(250),
     user_id VARCHAR(250)
