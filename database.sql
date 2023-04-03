@@ -31,28 +31,21 @@ create TABLE to_do(
     user_id VARCHAR(250)
 );
 
+create TABLE journal(
+    journal_id VARCHAR(250) PRIMARY KEY,
+    q1 VARCHAR(70),
+    q2 VARCHAR(70),
+    q3 VARCHAR(70),
+    q4 VARCHAR(70),
+    q5 VARCHAR(5),
+    my_day TEXT,
+    _date VARCHAR(250),
+    user_id VARCHAR(250)
+);
+
 create TABLE note(
     note_id VARCHAR(250) PRIMARY KEY,
     note_content TEXT,
     _date VARCHAR(250),
     user_id VARCHAR(250)
 );
-
-create TABLE journal(
-    journal_id VARCHAR(250) PRIMARY KEY,
-    time_on_work VARCHAR(250),
-    time_on_rest VARCHAR(250),
-    when_easy VARCHAR(250),
-    most_time VARCHAR(250),
-    pleased BOOLEAN,
-    my_day TEXT(450),
-    _date VARCHAR(250),
-    user_id VARCHAR(250),
-    FOREIGN KEY user_id REFERENCES user_info (user_id)
-);
-
-create TABLE history(
-    history_id VARCHAR(250),
-    _date DATE,
-    FOREIGN KEY _date REFERENCES user_info (_date)
-)
