@@ -3,14 +3,10 @@ const db = require('../db.js');
 
 class UserController {
     async addUser(req, res) {
-        try {
-            const { email, _password, first_name, last_name, profile_image } = req.body;
-            const newUser = await db.query('INSERT INTO user_info (user_id, email, _password, first_name, last_name, profile_image, goals, journal, notes, to_do_s) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *', 
-            [uuidv4(), email, _password, first_name, last_name, profile_image, [], [], [], []]);
-            res.json(newUser.rows);
-        } catch(e) {
-            res.json(e);
-        }
+        const { email, _password, first_name, last_name, profile_image } = req.body;
+        const newUser = await db.query('INSERT INTO user_info (user_id, email, _password, first_name, last_name, profile_image, goals, journal, notes, to_do_s) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *', 
+        [uuidv4(), email, _password, first_name, last_name, profile_image, [], [], [], []]);
+        res.json(newUser.rows);
     }
 
     async signInUser(req, res) {
