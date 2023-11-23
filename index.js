@@ -2,6 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const PORT = process.env.PORT || 5100;
 
+process.on('unhandledRejection', (reason, promise) => {
+    console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
 const userRouter = require("./routes/user.routes.js");
 const goalRouter = require("./routes/goal.routes.js");
 const noteRouter = require("./routes/note.routes.js");
