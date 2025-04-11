@@ -1,9 +1,9 @@
 const Pool = require("pg").Pool;
 const pool = new Pool({
     user: "nuritron",
-    host: "dpg-crt60f8gph6c7394n7og-a",
-    database: "organizer_db_qkji",
-    password: "f8UXxlFyabhPRK93fNYefoNrh3VOMVlf",
+    host: "dpg-cvse53re5dus739297ag-a",
+    database: "organizer_db_5lth",
+    password: "2hJJdIuIVRVIAkLTVsddbyDwPvq5hbCb",
     port: 5432,
 });
 // const pool = new Pool({
